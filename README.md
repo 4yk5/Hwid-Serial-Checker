@@ -19,6 +19,8 @@
 
 ---
 
+<img width="906" height="604" alt="image" src="https://github.com/user-attachments/assets/3c568574-3d06-45dd-8e3e-3f8f9a558d88" />
+
 ## ✨ Features
 
 - **Deep Hardware Identifier Audit**:
