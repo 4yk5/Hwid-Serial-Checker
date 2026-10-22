@@ -1,0 +1,555 @@
+<Window x:Class="HwidSerialChecker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="OG COMMUNITY - SERIAL CHECKER"
+        Icon="app.ico"
+        Height="630" Width="920"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Segoe UI, Inter, -apple-system, sans-serif"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True">
+
+    <Window.Resources>
+        <Style x:Key="CheckCardStyle" TargetType="Border">
+            <Setter Property="CornerRadius" Value="26"/>
+            <Setter Property="Background" Value="#10121A"/>
+            <Setter Property="BorderBrush" Value="#25FFFFFF"/>
+            <Setter Property="BorderThickness" Value="1.4"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1.0" ScaleY="1.0"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                 To="1.025" Duration="0:0:0.22">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                 To="1.025" Duration="0:0:0.22">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                 To="#171A26" Duration="0:0:0.2"/>
+                                <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                 To="#95FFFFFF" Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                 To="1.0" Duration="0:0:0.22">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                 To="1.0" Duration="0:0:0.22">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                 To="#10121A" Duration="0:0:0.2"/>
+                                <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                 To="#25FFFFFF" Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="CompareCardStyle" TargetType="Border">
+            <Setter Property="CornerRadius" Value="26"/>
+            <Setter Property="Background" Value="#0E1612"/>
+            <Setter Property="BorderBrush" Value="#404ADE80"/>
+            <Setter Property="BorderThickness" Value="1.4"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1.0" ScaleY="1.0"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                 To="1.025" Duration="0:0:0.22">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                 To="1.025" Duration="0:0:0.22">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                 To="#14241C" Duration="0:0:0.2"/>
+                                <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                 To="#B04ADE80" Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                 To="1.0" Duration="0:0:0.22">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                 To="1.0" Duration="0:0:0.22">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                 To="#0E1612" Duration="0:0:0.2"/>
+                                <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                 To="#404ADE80" Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="WindowCircleBtnClose" TargetType="Button">
+            <Setter Property="Width" Value="34"/>
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="btnBorder" CornerRadius="17" Background="#181B26" BorderBrush="#25FFFFFF" BorderThickness="1">
+                            <TextBlock Text="✕" FontSize="11.5" FontWeight="Bold" Foreground="#94A3B8"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,1"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="btnBorder" Property="Background" Value="#EF4444"/>
+                                <Setter TargetName="btnBorder" Property="BorderBrush" Value="#F87171"/>
+                                <Setter Property="Foreground" Value="#FFFFFF"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="WindowCircleBtnMin" TargetType="Button">
+            <Setter Property="Width" Value="34"/>
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="btnBorder" CornerRadius="17" Background="#181B26" BorderBrush="#25FFFFFF" BorderThickness="1">
+                            <TextBlock Text="—" FontSize="11.5" FontWeight="Bold" Foreground="#94A3B8"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="btnBorder" Property="Background" Value="#2D3446"/>
+                                <Setter TargetName="btnBorder" Property="BorderBrush" Value="#64748B"/>
+                                <Setter Property="Foreground" Value="#FFFFFF"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ActionPillBtn" TargetType="Border">
+            <Setter Property="CornerRadius" Value="14"/>
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="Padding" Value="14,0"/>
+        </Style>
+
+        <Style x:Key="ReportPillBtn" TargetType="Button">
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="btnBorder" CornerRadius="18" Background="#102418" BorderBrush="#504ADE80" BorderThickness="1.2" Padding="18,0">
+                            <TextBlock Text="OPEN REPORT ↗" FontSize="11.5" FontWeight="ExtraBold" Foreground="#4ADE80"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="btnBorder" Property="Background" Value="#1A4228"/>
+                                <Setter TargetName="btnBorder" Property="BorderBrush" Value="#904ADE80"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="24">
+        <Border CornerRadius="32" Background="#08090E">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="22" ShadowDepth="4" Direction="270" Color="Black" Opacity="0.75"/>
+            </Border.Effect>
+        </Border>
+
+        <Border x:Name="MainContainerBorder" CornerRadius="32" Background="#08090E" BorderBrush="#28FFFFFF" BorderThickness="1.2"
+                MouseLeftButtonDown="Window_MouseDown"
+                UseLayoutRounding="True"
+                SnapsToDevicePixels="True"
+                TextOptions.TextFormattingMode="Display"
+                TextOptions.TextRenderingMode="ClearType"
+                RenderOptions.ClearTypeHint="Enabled"
+                RenderOptions.BitmapScalingMode="HighQuality">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="75"/>
+                    <RowDefinition Height="165"/>
+                    <RowDefinition Height="52"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Border x:Name="SplashOverlay" Grid.RowSpan="4" CornerRadius="32" Background="#08090E" Panel.ZIndex="999">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Border x:Name="SplashLogo" Width="96" Height="96" CornerRadius="28" Background="#FFFFFF" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <ScaleTransform x:Name="SplashLogoScale" ScaleX="1.0" ScaleY="1.0"/>
+                            </Border.RenderTransform>
+                            <Border.Effect>
+                                <DropShadowEffect x:Name="SplashLogoGlow" BlurRadius="45" Color="White" Opacity="0.65"/>
+                            </Border.Effect>
+                            <TextBlock Text="OG" FontSize="44" FontWeight="Black" Foreground="#08090E"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,2"/>
+                        </Border>
+
+                        <TextBlock Text="OG COMMUNITY" FontSize="22" FontWeight="Black" Foreground="#FFFFFF"
+                                   HorizontalAlignment="Center" Margin="0,22,0,5"/>
+                        <TextBlock Text="HARDWARE &amp; SERIAL AUDITOR" FontSize="11" FontWeight="Bold" Foreground="#64748B"
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <Border x:Name="UpdateRequiredOverlay" Grid.RowSpan="4" CornerRadius="32" Background="#FA08090E" Panel.ZIndex="1000" Visibility="Collapsed">
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Border Width="460" Background="#0F131D" CornerRadius="24" BorderBrush="#2A3447" BorderThickness="1.2" Padding="32,32">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="40" Color="#000000" Opacity="0.85"/>
+                            </Border.Effect>
+                            <StackPanel HorizontalAlignment="Center">
+                                <Border Width="64" Height="64" CornerRadius="20" Background="#142B20" BorderBrush="#404ADE80" BorderThickness="1.5" HorizontalAlignment="Center" Margin="0,0,0,18">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="25" Color="#4ADE80" Opacity="0.35"/>
+                                    </Border.Effect>
+                                    <TextBlock Text="▲" FontSize="26" FontWeight="Black" Foreground="#4ADE80" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                                </Border>
+
+                                <TextBlock Text="UPDATE REQUIRED" FontSize="19" FontWeight="Black" Foreground="#FFFFFF" HorizontalAlignment="Center" Margin="0,0,0,8"/>
+
+                                <Border CornerRadius="8" Background="#161A24" BorderBrush="#334ADE80" BorderThickness="1" HorizontalAlignment="Center" Margin="0,0,0,16" Padding="10,4">
+                                    <TextBlock x:Name="TxtUpdateRequiredVersion" Text="Current: v1 • New Update Available" FontSize="11" FontWeight="Bold" Foreground="#4ADE80"/>
+                                </Border>
+
+                                <TextBlock Text="This version is outdated or discontinued. A newer release is available on GitHub. Please download the update to continue using OG Serial Checker."
+                                           FontSize="12" Foreground="#94A3B8" TextAlignment="Center" TextWrapping="Wrap" LineHeight="18" Margin="0,0,0,24"/>
+
+                                <Button x:Name="BtnDownloadUpdateRequired" Click="BtnDownloadUpdateRequired_Click"
+                                        Cursor="Hand" Height="46" BorderThickness="0" Background="Transparent" Margin="0,0,0,10">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border CornerRadius="12" Background="#4ADE80" Padding="18,0">
+                                                <Border.Effect>
+                                                    <DropShadowEffect BlurRadius="22" Color="#4ADE80" Opacity="0.45"/>
+                                                </Border.Effect>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                    <TextBlock Text="⬇" FontSize="14" FontWeight="Black" Foreground="#08090E" Margin="0,-1,8,0"/>
+                                                    <TextBlock Text="DOWNLOAD UPDATE" FontSize="12.5" FontWeight="Black" Foreground="#08090E"/>
+                                                </StackPanel>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+
+                                <Button x:Name="BtnExitApp" Click="BtnExitApp_Click"
+                                        Cursor="Hand" Height="36" BorderThickness="0" Background="Transparent">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border CornerRadius="10" Background="#161A24" BorderBrush="#2B3347" BorderThickness="1" Padding="14,0">
+                                                <TextBlock Text="CLOSE APPLICATION" FontSize="11" FontWeight="Bold" Foreground="#94A3B8" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Row="0" Margin="25,12,25,0" Background="Transparent" MouseLeftButtonDown="Window_MouseDown">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Border x:Name="LogoSquircle" Width="48" Height="48" CornerRadius="14" Background="#FFFFFF">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="22" Color="White" Opacity="0.45"/>
+                            </Border.Effect>
+                            <TextBlock Text="OG" FontSize="21" FontWeight="ExtraBold" Foreground="#08090E"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,1"/>
+                        </Border>
+
+                        <StackPanel Margin="14,0,0,0" VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="OG COMMUNITY" FontSize="16" FontWeight="ExtraBold" Foreground="#FFFFFF"/>
+                                <Border CornerRadius="6" Background="#163322" BorderBrush="#804ADE80" BorderThickness="1" Margin="8,0,0,0" Padding="6,1">
+                                    <TextBlock Text="v1" FontSize="9.5" FontWeight="ExtraBold" Foreground="#4ADE80"/>
+                                </Border>
+                            </StackPanel>
+                            <TextBlock Text="OG COMMUNITY SERIAL CHECKER" FontSize="9.5" FontWeight="Bold" Foreground="#94A3B8" Margin="0,3,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Border x:Name="BtnUpdatePill" CornerRadius="14" Background="#163322" BorderBrush="#804ADE80" BorderThickness="1.4" Padding="12,6"
+                                Visibility="Collapsed" Cursor="Hand" MouseLeftButtonDown="BtnUpdatePill_Click" Margin="0,0,10,0">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="▲" FontSize="10" FontWeight="Bold" Foreground="#4ADE80" Margin="0,0,6,0"/>
+                                <TextBlock x:Name="TxtUpdatePill" Text="UPDATE AVAILABLE" FontSize="10" FontWeight="ExtraBold" Foreground="#4ADE80"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border CornerRadius="14" Background="#14261C" BorderBrush="#354ADE80" BorderThickness="1.2"
+                                Padding="14,7" Margin="0,0,14,0">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <Ellipse x:Name="LedDot" Width="8" Height="8" Fill="#4ADE80" Margin="0,0,8,0"/>
+                                <TextBlock x:Name="TxtStatusPill" Text="ENGINE READY" FontSize="10.5" FontWeight="ExtraBold" Foreground="#4ADE80"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Button Style="{StaticResource WindowCircleBtnMin}" Click="Minimize_Click" Margin="0,0,8,0"/>
+
+                        <Button Style="{StaticResource WindowCircleBtnClose}" Click="Close_Click"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Row="1" Margin="25,6,25,4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" Style="{StaticResource CheckCardStyle}" MouseLeftButtonDown="CheckCard_Click">
+                        <Grid Margin="22,18">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Border Grid.Row="0" Width="42" Height="42" CornerRadius="14" Background="#1C202C" BorderBrush="#35FFFFFF" BorderThickness="1" HorizontalAlignment="Left">
+                                <TextBlock Text="⚡" FontSize="19" FontWeight="Bold" Foreground="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+
+                            <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="0,8,0,8">
+                                <TextBlock Text="CHECK SERIALS" FontSize="20" FontWeight="ExtraBold" Foreground="#FFFFFF"/>
+                            </StackPanel>
+
+                            <Border Grid.Row="2" Style="{StaticResource ActionPillBtn}" Background="#1C202C" BorderBrush="#35FFFFFF" BorderThickness="1">
+                                <TextBlock Text="CHECK" FontSize="12" FontWeight="ExtraBold" Foreground="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Column="2" Style="{StaticResource CompareCardStyle}" MouseLeftButtonDown="CompareCard_Click">
+                        <Grid Margin="22,18">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Border Grid.Row="0" Width="42" Height="42" CornerRadius="14" Background="#14281C" BorderBrush="#454ADE80" BorderThickness="1" HorizontalAlignment="Left">
+                                <TextBlock Text="↻" FontSize="21" FontWeight="Bold" Foreground="#4ADE80" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                            </Border>
+
+                            <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="0,8,0,8">
+                                <TextBlock Text="CHECK WITH NEW SERIALS" FontSize="18" FontWeight="ExtraBold" Foreground="#4ADE80"/>
+                            </StackPanel>
+
+                            <Border Grid.Row="2" Style="{StaticResource ActionPillBtn}" Background="#163422" BorderBrush="#554ADE80" BorderThickness="1">
+                                <TextBlock Text="CHECK NEW" FontSize="12" FontWeight="ExtraBold" Foreground="#4ADE80" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <Grid Grid.Row="2" Margin="25,5,25,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition Width="190"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" x:Name="BorderBaselinePill" CornerRadius="18" Background="#38161A" BorderBrush="#80EF4444" BorderThickness="1.4" Height="38">
+                        <TextBlock x:Name="TxtBaselinePill" Text="NOT CHECKED" FontSize="11.5" FontWeight="ExtraBold" Foreground="#F87171"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+
+                    <Border Grid.Column="2" x:Name="BorderResultPill" CornerRadius="18" Background="#10121A" BorderBrush="#25FFFFFF" BorderThickness="1.2" Height="38">
+                        <TextBlock x:Name="TxtResultPill" Text="AUDIT: READY" FontSize="11" FontWeight="Bold" Foreground="#94A3B8"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+
+                    <Button Grid.Column="4" Style="{StaticResource ReportPillBtn}" Height="38" Click="OpenReport_Click"/>
+                </Grid>
+
+                <Grid Grid.Row="3" Margin="25,4,25,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="330"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" CornerRadius="24" Background="#0C0E14" BorderBrush="#22FFFFFF" BorderThickness="1.2">
+                        <Grid Margin="18,14">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0" Margin="0,0,0,10">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Ellipse Width="8" Height="8" Fill="#EF4444" Margin="0,0,6,0"/>
+                                    <Ellipse Width="8" Height="8" Fill="#F59E0B" Margin="0,0,6,0"/>
+                                    <Ellipse Width="8" Height="8" Fill="#10B981" Margin="0,0,10,0"/>
+                                    <TextBlock Text="ACTIVITY TERMINAL" FontSize="10" FontWeight="ExtraBold" Foreground="#94A3B8"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <ScrollViewer Grid.Row="1" x:Name="TerminalScroller" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+                                <StackPanel x:Name="TerminalLogStack"/>
+                            </ScrollViewer>
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Column="2" CornerRadius="24" Background="#0C0E14" BorderBrush="#22FFFFFF" BorderThickness="1.2">
+                        <Grid Margin="20,16">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Grid.Row="0" Margin="0,0,0,12">
+                                <TextBlock Text="HARDWARE SNAPSHOT" FontSize="14" FontWeight="ExtraBold" Foreground="#FFFFFF"/>
+                                <TextBlock Text="ACTIVE SYSTEM IDENTIFIERS" FontSize="9" FontWeight="Bold" Foreground="#94A3B8" Margin="0,2,0,0"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="46"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border CornerRadius="7" Background="#1C202E" Height="22" Width="36" HorizontalAlignment="Left">
+                                        <TextBlock Text="MB" FontSize="9.5" FontWeight="ExtraBold" Foreground="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                        <TextBlock Text="BASEBOARD" FontSize="8.5" FontWeight="Bold" Foreground="#94A3B8"/>
+                                        <TextBlock x:Name="TxtMbValue" Text="Not scanned yet" FontSize="11" FontFamily="Consolas, Segoe UI" FontWeight="SemiBold" Foreground="#FFFFFF" TextTrimming="CharacterEllipsis"/>
+                                    </StackPanel>
+                                </Grid>
+
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="46"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border CornerRadius="7" Background="#1C202E" Height="22" Width="36" HorizontalAlignment="Left">
+                                        <TextBlock Text="CPU" FontSize="9.5" FontWeight="ExtraBold" Foreground="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                        <TextBlock Text="PROCESSOR" FontSize="8.5" FontWeight="Bold" Foreground="#94A3B8"/>
+                                        <TextBlock x:Name="TxtCpuValue" Text="Not scanned yet" FontSize="11" FontFamily="Consolas, Segoe UI" FontWeight="SemiBold" Foreground="#FFFFFF" TextTrimming="CharacterEllipsis"/>
+                                    </StackPanel>
+                                </Grid>
+
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="46"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border CornerRadius="7" Background="#1C202E" Height="22" Width="36" HorizontalAlignment="Left">
+                                        <TextBlock Text="GPU" FontSize="9.5" FontWeight="ExtraBold" Foreground="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                        <TextBlock Text="GRAPHICS" FontSize="8.5" FontWeight="Bold" Foreground="#94A3B8"/>
+                                        <TextBlock x:Name="TxtGpuValue" Text="Not scanned yet" FontSize="11" FontFamily="Consolas, Segoe UI" FontWeight="SemiBold" Foreground="#FFFFFF" TextTrimming="CharacterEllipsis"/>
+                                    </StackPanel>
+                                </Grid>
+
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="46"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border CornerRadius="7" Background="#1C202E" Height="22" Width="36" HorizontalAlignment="Left">
+                                        <TextBlock Text="DSK" FontSize="9.5" FontWeight="ExtraBold" Foreground="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                        <TextBlock Text="STORAGE" FontSize="8.5" FontWeight="Bold" Foreground="#94A3B8"/>
+                                        <TextBlock x:Name="TxtDiskValue" Text="Not scanned yet" FontSize="11" FontFamily="Consolas, Segoe UI" FontWeight="SemiBold" Foreground="#FFFFFF" TextTrimming="CharacterEllipsis"/>
+                                    </StackPanel>
+                                </Grid>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="46"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border CornerRadius="7" Background="#1C202E" Height="22" Width="36" HorizontalAlignment="Left">
+                                        <TextBlock Text="UID" FontSize="9.5" FontWeight="ExtraBold" Foreground="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                        <TextBlock Text="SYSTEM UUID" FontSize="8.5" FontWeight="Bold" Foreground="#94A3B8"/>
+                                        <TextBlock x:Name="TxtUuidValue" Text="Not scanned yet" FontSize="11" FontFamily="Consolas, Segoe UI" FontWeight="SemiBold" Foreground="#FFFFFF" TextTrimming="CharacterEllipsis"/>
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
