@@ -34,20 +34,6 @@
   - **Network Adapters**: Physical MAC addresses, permanent hardware MAC, and registry override addresses.
   - **Monitors & Displays**: Active display serial numbers extracted directly from raw monitor EDID tables.
   - **Security (TPM)**: TPM specification version, endorsement key presence, and cryptographic hashes (MD5, SHA1, SHA256).
-- **Side-by-Side Spoof Comparison Engine**:
-  - Automatically compares new hardware scans against the saved original baseline.
-  - Generates standalone, responsive HTML matrix reports directly to the Desktop (`OG_OriginalSerials.html` & `OG_NewSerials.html`).
-  - Highlights changed identifiers in **vibrant emerald green** and unchanged identifiers in neutral gray.
-- **Ultra-Modern Dark UI**:
-  - DirectX hardware-accelerated WPF interface with smooth rounded corners, native drop shadows, and anti-aliased subpixel ClearType rendering.
-  - Real-time **Activity Terminal** tracking scanner events and query results.
-  - Hardware Snapshot panel displaying active system identifiers at a glance.
-  - Cinematic **OG Splash Intro** overlay on startup.
-- **Built-in GitHub Auto-Updater**:
-  - Automatically queries your GitHub repository in the background.
-  - Surfaces a one-click glowing update pill whenever a newer version is released.
-  - Automatically downloads, replaces, and restarts the application with zero manual file handling.
-
 ---
 
 ## 🛠️ Building from Source
