@@ -5,10 +5,6 @@
 </p>
 
 <p align="center">
-  <b>A modern, high-performance hardware identifier audit and anti-cheat spoof verification suite for Windows.</b>
-</p>
-
-<p align="center">
   <img src="https://img.shields.io/badge/.NET-10.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET 10" />
   <img src="https://img.shields.io/badge/Platform-Windows%2010%20%2F%2011-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows" />
   <img src="https://img.shields.io/badge/License-MIT-4ADE80?style=for-the-badge" alt="MIT License" />
